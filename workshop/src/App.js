@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home";
+import CityWeather from "./pages/CityWeather";
+import FindWeather from "./pages/FindWeather";
+import ErrorPage from "./pages/ErrorPage";
+import React from "react";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+    errorElement: <ErrorPage />,
+  },
+  { path: "/cityweather/:city", element: <CityWeather /> },
+  { path: "/findweather", element: <FindWeather /> },
+]);
 function App() {
   return (
     <div className="App">
+      {" "}
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Projekt na zaliczenie kursu zaawansowanego JS'a.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        {" "}
+        <RouterProvider router={router} />{" "}
+      </header>{" "}
     </div>
   );
 }
-
 export default App;
